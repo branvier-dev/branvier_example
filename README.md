@@ -27,6 +27,26 @@
 
 - Exemplo: [Estoque de Produtos](https://github.com/branvier-dev/branvier_example.git)
 
+## Feature
+
+Cada funcionalidade da aplicação é uma feature. Ela é composta por:
+
+- Repositories
+- Models
+- Stores/UseCases
+- Views
+- Widgets
+
+Dividimos ela em camadas, onde cada uma tem uma responsabilidade específica. Uma camada não pode acessar outra camada diretamente.
+
+As Widgets e Views são a interface com o usuário, e são responsáveis por exibir e coletar informações. Elas podem acessar as Stores e UseCases diretamente por meio do Provider: `context.watch<MinhaStore>()` ou `context.read<MinhaUseCase>()`.
+
+As Stores são responsáveis por gerenciar o estado da aplicação. Elas podem acessar os Repositórios diretamente (não outras Stores/UseCases). O Provider fará o trabalho de injetar essas dependências.
+
+As UseCases são como as Stores, mas não gerenciam o estado da aplicação. Elas também podem acessar os Repositórios diretamente, mas não podem acessar outras Stores/UseCases.
+
+Os Repositórios são responsáveis por gerenciar a fonte de dados, tratá-la e fornecê-la para o resto da aplicação de uma forma mais amigável. Eles não podem acessar outros Repositórios diretamente, apenas os Serviços.
+
 ## Model
 
 Um modelo é uma representação de um objeto de negócios.
