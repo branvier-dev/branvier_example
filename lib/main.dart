@@ -2,7 +2,7 @@ import 'package:branvier_teste/app/features/auth/repositories/auth_repository.da
 import 'package:branvier_teste/app/features/products/repositories/product_repositories.dart';
 import 'package:branvier_teste/app/features/user/repositories/user_repository.dart';
 import 'package:branvier_teste/app/services/api_service.dart';
-import 'package:branvier_teste/app_widget.dart';
+import 'package:branvier_teste/app/app_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

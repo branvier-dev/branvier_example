@@ -1,14 +1,15 @@
 import 'package:branvier_teste/app/features/auth/stores/auth_store.dart';
 import 'package:branvier_teste/app/features/products/stores/product_store.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
-import 'app/features/auth/views/login_page.dart';
-import 'app/features/auth/views/register_page.dart';
-import 'app/features/products/views/home_page.dart';
-import 'app/features/products/views/product_page.dart';
-import 'app/features/user/stores/user_store.dart';
-import 'app/features/user/views/user_shell.dart';
+import 'features/auth/views/login_page.dart';
+import 'features/auth/views/register_page.dart';
+import 'features/products/views/home_page.dart';
+import 'features/products/views/product_page.dart';
+import 'features/user/stores/user_store.dart';
+import 'features/user/views/user_shell.dart';
 
 final appRouter = GoRouter(
   routes: [
@@ -69,3 +70,22 @@ final appRouter = GoRouter(
     )
   ],
 );
+
+/// Vamos navegar apenas de duas formas:
+///
+/// - `go` para ir para uma rota
+/// - `pushDialog` para abrir um dialog
+extension DialogExtension on BuildContext {
+  Future<T?> pushDialog<T extends Object?>(
+    Widget dialog, {
+    bool dismissible = false,
+  }) {
+    return Navigator.of(this).push<T>(
+      MaterialPageRoute(
+        fullscreenDialog: true,
+        barrierDismissible: dismissible,
+        builder: (_) => dialog,
+      ),
+    );
+  }
+}

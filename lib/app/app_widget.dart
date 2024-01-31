@@ -1,4 +1,4 @@
-import 'package:branvier_teste/app_router.dart';
+import 'package:branvier_teste/app/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:formx/formx.dart';
 

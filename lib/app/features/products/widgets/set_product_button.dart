@@ -1,3 +1,4 @@
+import 'package:branvier_teste/app/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -28,17 +29,9 @@ class SetProductButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return FloatingActionButton(
       onPressed: () async {
-        final newProduct = await Navigator.of(context).push<ProductModel>(
-          MaterialPageRoute(
-            // Ao setar `fullscreenDialog` como `true`, estamos dizendo que
-            // essa tela é um modal.
-            // Isso fará ela animar de baixo para cima.
-            fullscreenDialog: true,
-            builder: (_) => SetProductDialog(
-              title: title,
-              product: product,
-            ),
-          ),
+        // Abriremos um dialog para adicionar ou editar um produto.
+        final newProduct = await context.pushDialog<ProductModel>(
+          SetProductDialog(title: title, product: product),
         );
 
         // Aqui, estamos verificando se o produto é nulo ou se a tela foi

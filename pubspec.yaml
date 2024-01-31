@@ -14,6 +14,9 @@ dependencies:
   provider: ^6.1.1
   go_router: ^13.1.0
 
+  #services
+  # dio: ^4.0.0
+
   #ui
   flutter_async: ^0.6.3
   formx: ^0.6.0
