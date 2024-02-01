@@ -19,7 +19,7 @@ dependencies:
 
   #ui
   flutter_async: ^0.6.3
-  formx: ^0.6.0
+  formx: ^0.6.1
 
 dev_dependencies:
   flutter_test:

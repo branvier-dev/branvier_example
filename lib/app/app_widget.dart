@@ -13,14 +13,7 @@ class AppWidget extends StatelessWidget {
     /// O `Formx` é um widget que permite que você modifique a decoração de todos
     /// os `FormxField` que estão dentro dele.
     return Formx(
-      decorationModifier: (tag, decoration) {
-        return decoration?.copyWith(
-          labelText: tag,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8),
-          ),
-        );
-      },
+      decorator: (tag, decoration) => decoration?.copyWith(labelText: tag),
       child: MaterialApp.router(
         routerConfig: appRouter,
         theme: ThemeData(
@@ -29,8 +22,15 @@ class AppWidget extends StatelessWidget {
           ///
           /// Sempre que for colorir algo, venha aqui antes.
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.yellow),
+
+          inputDecorationTheme: InputDecorationTheme(
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+          ),
         ),
       ),
     );
   }
 }
+

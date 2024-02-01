@@ -11,8 +11,6 @@
         - /repositories
         - /stores
         - /views
-          - _page.dart
-          - _dialog.dart
         - /widgets
     - /services
       - /source
@@ -31,10 +29,19 @@
 
 Cada funcionalidade da aplicação é uma feature. Ela é composta por:
 
-- Repositories
-- Models
+"Model"
+
+- Services (Dio, Storage, VrService etc...)
+- Repositories (ex: login, get, save, delete)
+- Models (ex: User, Product)
+
+"ViewModel"
+
 - Stores/UseCases
-- Views
+
+"View"
+
+- Views (page, dialog)
 - Widgets
 
 Dividimos ela em camadas, onde cada uma tem uma responsabilidade específica. Uma camada não pode acessar outra camada diretamente.
@@ -129,6 +136,12 @@ class DioService extends DioMixin {}
 O Repository é responsável por gerenciar a fonte de dados, tratá-la e fornecê-la para o resto da aplicação de uma forma mais amigável.
 
 ```dart
+class LoginDto {
+  final String email;
+  final String password;
+  const LoginDto(this.email, this.password);
+}
+
 class AuthRepository {
   AuthRepository(this.dio, this.storage, this.crypto);
 

@@ -18,7 +18,7 @@ class LoginPage extends StatelessWidget {
   /// É uma boa prática manter ações de UI em métodos separados.
   ///
   /// Isso facilita a manutenção e a leitura do código.
-  Future<void> onLogin(BuildContext context, FormxState state) async {
+  Future<void> login(BuildContext context, FormxState state) async {
     // Se o formulário não for válido, não fazemos nada.
     if (!state.validate()) return;
 
@@ -39,7 +39,7 @@ class LoginPage extends StatelessWidget {
     if (context.mounted) context.go(HomePage.path);
   }
 
-  Future<void> onRegister(BuildContext context) async {
+  Future<void> register(BuildContext context) async {
     // Aqui, usamos o `GoRouter` para navegar para a página de registro.
     // O `GoRouter` é uma alternativa ao `Navigator` que é mais fácil de usar.
     // Você pode ver mais sobre ele em https://pub.dev/packages/go_router.
@@ -59,21 +59,21 @@ class LoginPage extends StatelessWidget {
           constraints: const BoxConstraints(maxWidth: 400),
           child: Formx(
             /// O `onSubmitted` é chamado quando o usuário aperta 'enter'.
-            onSubmitted: (state) => onLogin(context, state),
+            onSubmitted: (state) => login(context, state),
             builder: (context, state) => Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 const TextFormxField(tag: 'email').required(),
                 const TextFormxField(tag: 'password').obscure(),
                 OutlinedButton(
-                  onPressed: () => onLogin(context, state),
+                  onPressed: () => login(context, state),
                   child: const Text('Login'),
                 ).asAsync(),
                 // O `asAsync` é um método de extensão do 'flutter_async' que
                 // adiciona um loading ao carregar e mostra o erro se houver.
 
                 ElevatedButton(
-                  onPressed: () => onRegister(context),
+                  onPressed: () => register(context),
                   child: const Text('Register'),
                 ).asAsync(),
               ],

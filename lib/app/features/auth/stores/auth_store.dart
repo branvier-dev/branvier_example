@@ -8,6 +8,7 @@ class AuthStore extends ChangeNotifier {
   AuthStore(this._repository);
   final AuthRepository _repository;
 
+  // Váriavel de estado que armazena o token do usuário logado.
   String? _token;
 
   String? get token => _token;
